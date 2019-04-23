@@ -30,7 +30,6 @@
   "engines": {
     "node": ">=7.6"
   },
-  "engineStrict": true,
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
