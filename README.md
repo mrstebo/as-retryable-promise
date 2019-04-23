@@ -5,3 +5,28 @@
 # as-retryable-promise
 
 Wraps a promise so that it can be retried
+
+## Usage
+
+```js
+const asRetryablePromise = require("as-retryable-promise");
+const fs = require("fs");
+const fn = () => new Promise((resolve ,reject) => {
+  fs.readFile("./my-file.txt", (err, data) => {
+    if (err) return reject(err);
+    return resolve(data);
+  });
+});
+
+// Will retry if the file is locked
+const options = {
+  maxRetries: 5,
+  timeout: 1000,
+  retryCondition: error => error.code === "EACCES",
+};
+const retryable = asRetryablePromise(fn, options);
+
+retryable
+  .then(data => console.log(data))
+  .catch(err => console.error(err)); // Will return the error from the last attempt
+```
