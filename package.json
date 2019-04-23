@@ -4,8 +4,7 @@
   "description": "Wraps a promise so that it can be retried",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --colors --recursive --reporter list ./test",
-    "test:cover": "./node_modules/.bin/istanbul cover --report lcov --report html ./node_modules/mocha/bin/_mocha -- --recursive test/**/*.spec.js"
+    "test": "./node_modules/.bin/istanbul cover --report lcov --report html ./node_modules/mocha/bin/_mocha -- --recursive test/**/*.spec.js"
   },
   "repository": {
     "type": "git",
